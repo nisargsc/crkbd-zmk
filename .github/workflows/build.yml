@@ -1,10 +1,24 @@
 name: Build ZMK firmware
 on:
   workflow_dispatch:
-  push:
+  # Build on pull requests so every PR gets a firmware check + artifacts.
+  pull_request:
     paths:
       - "config/**"
       - "build.yaml"
+  # Build on pushes to the default branch (e.g. merges) — feature-branch
+  # builds come from the pull_request trigger above, avoiding double runs.
+  push:
+    branches:
+      - crkbd-zmk-v0
+    paths:
+      - "config/**"
+      - "build.yaml"
+
+# Cancel an in-progress build when a newer commit lands on the same branch/PR.
+concurrency:
+  group: build-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
