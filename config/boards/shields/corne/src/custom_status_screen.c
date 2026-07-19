@@ -65,10 +65,13 @@ static struct zmk_widget_battery_status battery_widget;
 static struct zmk_widget_peripheral_status peripheral_widget;
 
 lv_obj_t *zmk_display_status_screen(void) {
+    /* Plain themed screen (like ZMK's built-in): the mono theme supplies the
+     * dark background and the inherited text color the label widgets need.
+     * Don't strip it, or the battery/connection labels render dark-on-dark.
+     * Only zero the padding (so the bars' absolute coords span the full 128px)
+     * and disable scrolling. */
     lv_obj_t *screen = lv_obj_create(NULL);
-    lv_obj_remove_style_all(screen);
-    lv_obj_set_style_bg_color(screen, lv_color_black(), 0);
-    lv_obj_set_style_bg_opa(screen, LV_OPA_COVER, 0);
+    lv_obj_set_style_pad_all(screen, 0, 0);
     lv_obj_clear_flag(screen, LV_OBJ_FLAG_SCROLLABLE);
 
     /* connection — top left */
