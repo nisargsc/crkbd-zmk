@@ -8,8 +8,9 @@
  * the path). The peripheral has no layer/WPM/key state, so the animation is
  * fully self-contained: it needs nothing relayed from the central half.
  *
- * White (lit) bars on a black (OFF) background keep the lit-pixel count low,
- * which is friendly to the peripheral battery and BLE link.
+ * The bars use the mono theme's foreground color, so they sit on the same
+ * "ink" as the battery/connection text (dark on the default light panel; the
+ * theme flips both when CONFIG_ZMK_DISPLAY_INVERT is set).
  */
 
 #include <zephyr/kernel.h>
@@ -84,10 +85,14 @@ lv_obj_t *zmk_display_status_screen(void) {
     lv_obj_align(zmk_widget_battery_status_obj(&battery_widget),
                  LV_ALIGN_TOP_RIGHT, 0, 0);
 
-    /* equalizer — lit rectangles anchored to the bottom edge */
+    /* equalizer — rectangles in the theme's foreground colour, anchored to the
+     * bottom edge (matches the label "ink" so they're visible on either panel
+     * polarity). */
+    lv_color_t fg = IS_ENABLED(CONFIG_ZMK_DISPLAY_INVERT) ? lv_color_white()
+                                                          : lv_color_black();
     lv_style_init(&bar_style);
     lv_style_set_bg_opa(&bar_style, LV_OPA_COVER);
-    lv_style_set_bg_color(&bar_style, lv_color_white());
+    lv_style_set_bg_color(&bar_style, fg);
     lv_style_set_border_width(&bar_style, 0);
     lv_style_set_radius(&bar_style, 0);
     lv_style_set_pad_all(&bar_style, 0);
