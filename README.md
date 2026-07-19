@@ -1,7 +1,7 @@
 # Corne ZMK Keymap
 
 Split ergonomic keyboard (42 keys) running [ZMK firmware](https://zmk.dev) on Nice!Nano v2.
-Miryoku-style layout adapted from TOTEM config.
+Miryoku-style layout adapted from TOTEM config. **Colemak-DH** primary base with a single-key **QWERTY** toggle.
 
 ## Keymap
 
@@ -13,8 +13,8 @@ The SVG updates automatically on push via the [Draw Keymap](.github/workflows/dr
 
 ## Display
 
-- **Left (central):** Built-in ZMK status screen (layer, battery, BT)
-- **Right (peripheral):** Custom P keycap logo with glitch effects + battery + BT status
+- **Left (central):** Built-in ZMK status screen — active base (COLEMAK / QWERTY) or held layer, battery, BT
+- **Right (peripheral):** Built-in status — battery + connection (OLED build) / nice!view art widget (nice!view build)
 
 ## Interactive Viewer
 
@@ -22,7 +22,7 @@ The SVG updates automatically on push via the [Draw Keymap](.github/workflows/dr
 make viewer
 ```
 
-Press `?` for the cheat sheet. Press `0-6` to switch layers.
+Press `?` for the cheat sheet. Press `0-7` to switch layers.
 
 ## Build Firmware
 
