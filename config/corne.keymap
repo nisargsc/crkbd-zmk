@@ -10,8 +10,8 @@
 //
 //   Layer 0: COLEMAK — Colemak-DH + home row mods (default base)
 //   Layer 1: QWERTY  — QWERTY alternate base (toggle: press the QWERTY key on the MEDIA layer)
-//   Layer 2: NAV     — vim arrows, clipboard, nav (hold SPACE)
-//   Layer 3: NUM     — numpad left hand (hold BSPC)
+//   Layer 2: NAV     — vim arrows, clipboard, nav (hold BSPC, left thumb)
+//   Layer 3: NUM     — numpad left hand (hold SPACE, right thumb)
 //   Layer 4: MEDIA   — media, BT, RGB, base toggle (hold ESC)
 //   Layer 5: SYM     — symbols left hand, digraphs right hand (hold ENTER)
 //   Layer 6: FUN     — function keys left hand (hold DEL)
@@ -135,7 +135,7 @@
 &kp TAB        &kp Q       &kp W       &kp F        &kp P        &kp B      &kp J        &kp L        &kp U        &kp Y       &kp SEMI     &kp BSPC
 &mt LCTRL ESC  &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T  &kp G      &kp M        &mt RSHFT N  &mt RCTRL E  &mt RALT I  &mt RGUI O   &hyper
 &kp LSHFT      &kp Z       &kp X       &kp C        &kp D        &kp V      &kp K        &kp H        &kp COMMA    &kp DOT     &kp FSLH     &kp ESC
-                                       &lt MEDIA ESC &lt NAV SPACE &lt MOUSE TAB  &lt SYM RET &lt NUM BSPC  &lt FUN DEL
+                                       &lt MEDIA ESC &lt NAV BSPC  &lt MOUSE TAB  &lt SYM RET &lt NUM SPACE &lt FUN DEL
             >;
         };
 
