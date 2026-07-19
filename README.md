@@ -14,7 +14,7 @@ The SVG updates automatically on push via the [Draw Keymap](.github/workflows/dr
 ## Display
 
 - **Left (central):** Built-in ZMK status screen — active base (COLEMAK / QWERTY) or held layer, battery, BT
-- **Right (peripheral):** Built-in status — battery + connection (OLED build) / nice!view art widget (nice!view build)
+- **Right (peripheral):** Custom status screen — battery + connection widgets with a self-running equalizer animation along the bottom
 
 ## Interactive Viewer
 
