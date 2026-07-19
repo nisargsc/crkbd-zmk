@@ -748,15 +748,20 @@ echo "GREEN: display cleanup verified"
   (P-logo removed cleanly). **T1** (keymap-drawer parse) was skipped — a broken tree-sitter/keymap-drawer
   combo in the run environment — and is superseded by a real compile below.
 - Commit `cd337e4` pushed to `claude/corne-zmk-config-3n1emf`.
-- **GitHub Actions is DISABLED on this repository.** `list_workflows`, `get_workflow build.yml`, and a
-  `workflow_dispatch` all return 404, and there are zero runs ever. The intended CI compile (T4/T5)
-  could not run. Re-enable at **Settings → Actions → General** to restore automatic `.uf2` builds and
-  the keymap-SVG workflow.
+- **CI visibility note (corrects an earlier wrong call).** Actions is **enabled** on this repo
+  ("Allow all actions and reusable workflows"). The automation *misdiagnosed* it as disabled: every
+  `list_workflows` / `get_workflow` / `workflow_dispatch` / `get_check_runs` call from its GitHub-App
+  API tools returned **404** (the app lacks Actions/Checks read scope), and outbound web access to
+  `api.github.com` was **blocked by the run environment's egress proxy (403)** — so it had no way to
+  *observe* CI and wrongly concluded "disabled." Real CI runs are visible in the repo's **Actions tab**.
+  Caveat: the branch tip after this commit is docs-only, so `build.yml` (which triggers on `config/**`
+  or `build.yaml`) ran on the config commit but may need a config-touching push or a manual
+  "Run workflow" to produce a run on the exact tip.
 - **Fallback compile (real gate): built ZMK locally** in the run container — `west` + Zephyr +
   the Debian `gnuarmemb` ARM toolchain (the Zephyr SDK host was blocked by the network proxy).
   **All 5 targets compiled error-free**, proving the keymap + config are valid firmware:
   `corne_left`/`corne_right` (OLED) and both `nice_view` variants, plus `settings_reset`.
   Board target: `nice_nano//zmk` (ZMK Hardware-Model-v2).
 - The five `.uf2` binaries were delivered to the user via chat (not committed — build artifacts don't
-  belong in the config repo). Regenerate them via CI once Actions is enabled, or locally with the
-  same west workspace.
+  belong in the config repo). Official artifacts are also produced by the repo's CI (Actions tab →
+  the `build.yml` run), or can be regenerated locally with the same west workspace.
