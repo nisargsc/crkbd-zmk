@@ -101,7 +101,7 @@
         compatible = "zmk,combos";
 
         // -- Tier 1: Essential --
-        combo_caps_word { bindings = <&caps_word>; key-positions = <16 19>; timeout-ms = <30>; require-prior-idle-ms = <150>; };
+        // (caps-word combo removed — use hold-Shift for capitals; CAPS LOCK lives on the NAV layer)
         combo_esc  { bindings = <&kp ESC>;  key-positions = <2 3>;  timeout-ms = <30>; require-prior-idle-ms = <150>; };
         combo_bspc { bindings = <&kp BSPC>; key-positions = <8 9>;  timeout-ms = <30>; require-prior-idle-ms = <150>; };
         combo_del  { bindings = <&kp DEL>;  key-positions = <9 10>; timeout-ms = <30>; require-prior-idle-ms = <150>; };
